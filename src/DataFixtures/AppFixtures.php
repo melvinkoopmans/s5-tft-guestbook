@@ -24,28 +24,41 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $amsterdam = new Conference();
-        $amsterdam->setCity('Amsterdam');
-        $amsterdam->setYear('2019');
-        $amsterdam->setIsInternational(true);
+        $amsterdam
+            ->setCity('Amsterdam')
+            ->setYear('2019')
+            ->setIsInternational(true);
         $manager->persist($amsterdam);
 
         $paris = new Conference();
-        $paris->setCity('Paris');
-        $paris->setYear('2020');
-        $paris->setIsInternational(false);
+        $paris
+            ->setCity('Paris')
+            ->setYear('2020')
+            ->setIsInternational(false);
         $manager->persist($paris);
 
         $comment1 = new Comment();
-        $comment1->setConference($amsterdam);
-        $comment1->setAuthor('Fabien');
-        $comment1->setEmail('fabien@example.com');
-        $comment1->setText('This was a great conference.');
+        $comment1
+            ->setConference($amsterdam)
+            ->setAuthor('Fabien')
+            ->setEmail('fabien@example.com')
+            ->setState('published')
+            ->setText('This was a great conference.');
         $manager->persist($comment1);
 
+        $comment2 = new Comment();
+        $comment2
+            ->setConference($amsterdam)
+            ->setAuthor('Melvin')
+            ->setEmail('melvin.koopmans@gmail.com')
+            ->setText('I think this one is going to be moderated.');
+        $manager->persist($comment2);
+
         $admin = new Admin();
-        $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setUsername('admin');
-        $admin->setPassword($this->encoderFactory->getEncoder(Admin::class)->encodePassword('admin', null));
+        $admin
+            ->setRoles(['ROLE_ADMIN'])
+            ->setUsername('admin')
+            ->setPassword($this->encoderFactory->getEncoder(Admin::class)->encodePassword('admin', null));
         $manager->persist($admin);
 
         $manager->flush();
