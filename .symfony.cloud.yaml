@@ -4,6 +4,7 @@ type: php:7.3
 
 runtime:
     extensions:
+        - amqp
         - apcu
         - mbstring
         - sodium
@@ -15,6 +16,7 @@ runtime:
 relationships:
     database: "db:postgresql"
     redis: "rediscache:redis"
+    rabbitmq: "queue:rabbitmq"
 
 build:
     flavor: none
