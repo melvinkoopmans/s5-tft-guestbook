@@ -31,6 +31,7 @@
         "twig/cssinliner-extra": "^3.0",
         "twig/inky-extra": "^3.0",
         "twig/intl-extra": "^3.0",
+        "twig/string-extra": "^3.0",
         "webonyx/graphql-php": "^0.13.8"
     },
     "require-dev": {
